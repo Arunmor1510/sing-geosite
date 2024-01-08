@@ -352,9 +352,6 @@ func generate(release *github.RepositoryRelease, output string, cnOutput string,
 	return nil
 }
 
-func setActionOutput(name string, content string) {
-	os.Stdout.WriteString("::set-output name=" + name + "::" + content + "\n")
-}
 
 func release(source string, destination string, output string, cnOutput string, ruleSetOutput string) error {
 	sourceRelease, err := fetch(source)
@@ -374,7 +371,6 @@ func release(source string, destination string, output string, cnOutput string, 
 	if err != nil {
 		return err
 	}
-	setActionOutput("tag", *sourceRelease.Name)
 	return nil
 }
 
